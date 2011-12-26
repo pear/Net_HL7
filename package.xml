@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Net_HL7</name>
+ <channel>pear.php.net</channel>
+ <summary>HL7 messaging API.</summary>
+ <description>This package provides an HL7 API for creating, sending and
+manipulating HL7 messages. HL7 is a protocol on the 7th OSI layer
+(hence the &apos;7&apos; in HL7) for messaging in Health Care
+environments. HL7 means &apos;Health Level 7&apos;. HL7 is a protocol with a
+wealth of semantics that defines hundreds of different messages and
+their meaning, but also defines the syntactics of composing and
+sending messages.  The API is focused on the syntactic level of
+HL7, so as to remain as flexible as possible. The package is a
+translation of the Perl HL7 Toolkit and will be kept in sync with
+this initiative.</description>
+ <lead>
+  <name>D.A.Dokter</name>
+  <user>ddokter</user>
+  <email>dokter@w20e.com</email>
+  <active>no</active>
+ </lead>
+ <date>2009-07-28</date>
+ <time>00:00:36</time>
+ <version>
+  <release>0.1.1</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license>PHP License, see http://www.php.net/license/3_0.txt</license>
+ <notes>
+QA release
+Package 2.0
+Bug #12705 - PHP5 vs references
+Bug #16415 - Undefined indexes
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <file baseinstalldir="/" md5sum="01941d5bd3bf5e506b2f45af3bae8bc0" name="docs/README" role="doc" />
+   <file baseinstalldir="/" md5sum="be0f37083259120af2c327c6ed5bc45c" name="Net/HL7.php" role="php" />
+   <file baseinstalldir="/" md5sum="a0a9100554240d7a7d27db680f06c34f" name="Net/HL7/Connection.php" role="php" />
+   <file baseinstalldir="/" md5sum="61fe888fdf073f15372871b6a179aa2a" name="Net/HL7/Message.php" role="php" />
+   <file baseinstalldir="/" md5sum="7e08de7882aa50d839346d9efe91c4e1" name="Net/HL7/Segment.php" role="php" />
+   <file baseinstalldir="/" md5sum="bcd96c75d6ad78a6bc766d8b41f821c3" name="Net/HL7/Messages/ACK.php" role="php" />
+   <file baseinstalldir="/" md5sum="f80441a25a20c7fe3d1bcd5455bba779" name="Net/HL7/Segments/MSH.php" role="php" />
+   <file baseinstalldir="/" md5sum="10b15d40e66733c98aff1345d9424a7d" name="tests/ack.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="f7290a6df489cfa95917eba8adabc1ce" name="tests/connection.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="5ae89b94c57a0085345abef7d2a5d53f" name="tests/message.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="8f34f397ca03d09773e2f0e295f4b7ab" name="tests/msh.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="84065d850670f2864a988d0f2477c608" name="tests/segment.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="0b3a16eafb842d9e7170ecd552f67b62" name="tests/test_base.php" role="test" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>4.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2009-07-28</date>
+   <license>PHP License, see http://www.php.net/license/3_0.txt</license>
+   <notes>
+QA release
+Package 2.0
+Bug #12705 - PHP5 vs references
+Bug #16415 - Undefined indexes
+   </notes>
+  </release>
+ </changelog>
+</package>

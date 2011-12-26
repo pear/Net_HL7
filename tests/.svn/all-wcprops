@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests
+END
+test_base.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests/test_base.php
+END
+msh.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests/msh.phpt
+END
+ack.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests/ack.phpt
+END
+connection.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests/connection.phpt
+END
+segment.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests/segment.phpt
+END
+message.phpt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/repository/!svn/ver/286407/pear/packages/Net_HL7/trunk/tests/message.phpt
+END
