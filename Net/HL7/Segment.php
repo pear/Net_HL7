@@ -35,7 +35,7 @@ class Net_HL7_Segment {
      *
      * Example: <code>
      *
-     * $seg =& new Net_HL7_Segment("PID");
+     * $seg = new Net_HL7_Segment("PID");
      *
      * $seg->setField(3, "12345678");
      * echo $seg->getField(1);
@@ -50,8 +50,8 @@ class Net_HL7_Segment {
      * @param mixed Name of the segment
      * @param array Fields for segment
      */
-    function Net_HL7_Segment($name, $fields = array()) 
-    {  
+    function Net_HL7_Segment($name, $fields = array())
+    {
         // Is the name 3 upper case characters?
         //
         if ((!$name) || (strlen($name) != 3) || (strtoupper($name) != $name)) {
@@ -65,7 +65,7 @@ class Net_HL7_Segment {
         if (is_array($fields)) {
 
             for ($i = 0; $i < count($fields); $i++) {
-	
+
                 $this->setField($i + 1, $fields[$i]);
             }
         }
@@ -78,7 +78,7 @@ class Net_HL7_Segment {
      * standard. Trying to set the value at index 0 has no effect.  The value
      * may also be a reference to an array (that may itself contain arrays)
      * to support composed fields (and subcomponents).
-     * 
+     *
      * To set a field to the HL7 null value, instead of omitting a field, can
      * be achieved with the _Net_HL7_NULL type, like:
      * <code>
@@ -92,19 +92,19 @@ class Net_HL7_Segment {
      * @return boolean
      * @access public
      */
-    function setField($index, $value= "") 
+    function setField($index, $value= "")
     {
         if (!($index && $value)) {
             return false;
         }
-    
+
         // Fill in the blanks...
         for ($i = count($this->_fields); $i < $index; $i++) {
             $this->_fields[$i] = "";
         }
 
         $this->_fields[$index] = $value;
-    
+
         return true;
     }
 
@@ -121,7 +121,7 @@ class Net_HL7_Segment {
      * @return mixed The value of the field
      * @access public
      */
-    function getField($index) 
+    function getField($index)
     {
         return $this->_fields[$index];
     }
@@ -133,7 +133,7 @@ class Net_HL7_Segment {
      * @return int number of fields
      * @access public
      */
-    function size() 
+    function size()
     {
         return count($this->_fields) - 1;
     }
@@ -149,23 +149,23 @@ class Net_HL7_Segment {
      * @return array List of fields
      * @access public
      */
-    function getFields($from = 0, $to = 0) 
+    function getFields($from = 0, $to = 0)
     {
         if (!$to) {
             $to = count($this->_fields);
         }
 
         return array_slice($this->_fields, $from, $to - $from + 1);
-    }    
+    }
 
 
     /**
      * Get the name of the segment. This is basically the value at index 0
-     * 
+     *
      * @return mixed Name of segment
      * @access public
      */
-    function getName() 
+    function getName()
     {
         return $this->_fields[0];
     }

@@ -24,14 +24,14 @@ require_once 'Net/HL7/Message.php';
 /**
  * Usage:
  * <code>
- * $conn =& new Net_HL7_Connection('localhost', 8089);
+ * $conn = new Net_HL7_Connection('localhost', 8089);
  *
- * $req =& new Net_HL7_Message();
- * 
+ * $req = new Net_HL7_Message();
+ *
  * ... set some request attributes
- * 
+ *
  * $res = $conn->send($req);
- * 
+ *
  * $conn->close();
  * </code>
  *
@@ -51,7 +51,7 @@ require_once 'Net/HL7/Message.php';
  *
  * _MESSAGE_SUFFIX
  * End of message signal for HL7 server. Defaults to \034\015.
- * 
+ *
  *
  * @version    0.10
  * @author     D.A.Dokter <dokter@w20e.com>
@@ -76,8 +76,8 @@ class Net_HL7_Connection {
      * @param int Port to connect to
      * @return boolean
      */
-    function Net_HL7_Connection($host, $port) 
-    {  
+    function Net_HL7_Connection($host, $port)
+    {
         $this->_HANDLE = $this->_connect($host, $port);
         $this->_MESSAGE_PREFIX = "\013";
         $this->_MESSAGE_SUFFIX = "\034\015";
@@ -95,8 +95,8 @@ class Net_HL7_Connection {
      * @return socket
      * @access private
      */
-    function _connect($host, $port) 
-    {  
+    function _connect($host, $port)
+    {
         $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         if ($socket < 0) {
             trigger_error("create failed: " . socket_strerror($socket), E_USER_ERROR);
@@ -114,17 +114,17 @@ class Net_HL7_Connection {
 
     /**
      * Sends a Net_HL7_Message object over this connection.
-     * 
+     *
      * @param object Instance of Net_HL7_Message
      * @return object Instance of Net_HL7_Message
      * @access public
      * @see Net_HL7_Message
      */
-    function send($req) 
+    function send($req)
     {
         $handle = $this->_HANDLE;
         $hl7Msg = $req->toString();
-    
+
         socket_write($handle, $this->_MESSAGE_PREFIX . $hl7Msg . $this->_MESSAGE_SUFFIX);
 
         $data = "";
@@ -148,11 +148,11 @@ class Net_HL7_Connection {
 
     /**
      * Close the connection.
-     * 
+     *
      * @access public
      * @return boolean
      */
-    function close() 
+    function close()
     {
         socket_close($this->_HANDLE);
         return true;

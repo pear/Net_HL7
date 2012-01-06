@@ -21,7 +21,7 @@
 class Net_HL7_Messages_ACK extends Net_HL7_Message {
 
     var $_ACK_TYPE;
-  
+
     /**
      * Usage:
      * <code>
@@ -39,26 +39,26 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
      * @package    Net_HL7
      * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
      */
-    function Net_HL7_Messages_ACK($req = "") 
+    public function __construct($req = "")
     {
-        parent::Net_HL7_Message();
-    
+        parent::__construct();
+
         if ($req) {
-            $msh =& $req->getSegmentByIndex(0);
+            $msh = $req->getSegmentByIndex(0);
 
             if ($msh) {
-                $msh =& new Net_HL7_Segments_MSH($msh->getFields(1));
+                $msh = new Net_HL7_Segments_MSH($msh->getFields(1));
             }
             else {
-                $msh =& new Net_HL7_Segments_MSH();
+                $msh = new Net_HL7_Segments_MSH();
             }
         }
         else {
-            $msh =& new Net_HL7_Segments_MSH();
+            $msh = new Net_HL7_Segments_MSH();
         }
 
-        $msa =& new Net_HL7_Segment("MSA");
-    
+        $msa = new Net_HL7_Segment("MSA");
+
         // Determine acknowledge mode: normal or enhanced
         //
         if ($req && ($msh->getField(15) || $msh->getField(16))) {
@@ -72,12 +72,12 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
 
         $this->addSegment($msh);
         $this->addSegment($msa);
-    
+
         $msh->setField(9, "ACK");
 
         // Construct an ACK based on the request
         if ($req && $reqMsh) {
-      
+
             $msh->setField(3, $reqMsh->getField(5));
             $msh->setField(4, $reqMsh->getField(6));
             $msh->setField(5, $reqMsh->getField(3));
@@ -100,7 +100,7 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
      * @return boolean
      * @access public
      */
-    function setAckCode($code, $msg = "") 
+    function setAckCode($code, $msg = "")
     {
         $mode = "A";
 
@@ -109,12 +109,12 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
         if ($this->_ACK_TYPE == "E") {
             $mode = "C";
         }
-    
+
         if (strlen($code) == 1) {
             $code = "$mode$code";
         }
 
-        $seg1 =& $this->getSegmentByIndex(1);
+        $seg1 = $this->getSegmentByIndex(1);
         $seg1->setField(1, $code);
         if ($msg) $seg1->setField(3, $msg);
 
@@ -126,12 +126,12 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
      * Set the error message for the acknowledgement. This will also set the
      * error code to either AE or CE, depending on the mode of the incoming
      * message.
-     * 
+     *
      * @param mixed Error message
      * @return boolean
      * @access public
      */
-    function setErrorMessage($msg) 
+    function setErrorMessage($msg)
     {
         $this->setAckCode("E", $msg);
         return true;
