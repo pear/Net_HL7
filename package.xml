@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>Net_HL7</name>
  <channel>pear.php.net</channel>
  <summary>HL7 messaging API.</summary>
@@ -19,11 +19,11 @@ this initiative.</description>
   <email>dokter@w20e.com</email>
   <active>no</active>
  </lead>
- <date>2009-07-28</date>
- <time>00:00:36</time>
+ <date>2012-01-06</date>
+ <time>16:17:38</time>
  <version>
-  <release>0.1.1</release>
-  <api>0.1.0</api>
+  <release>0.2.0</release>
+  <api>0.2.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -32,25 +32,24 @@ this initiative.</description>
  <license>PHP License, see http://www.php.net/license/3_0.txt</license>
  <notes>
 QA release
-Package 2.0
-Bug #12705 - PHP5 vs references
-Bug #16415 - Undefined indexes
+PHP 5
+Bug #19203 Deprecated warnings
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="/" md5sum="01941d5bd3bf5e506b2f45af3bae8bc0" name="docs/README" role="doc" />
-   <file baseinstalldir="/" md5sum="be0f37083259120af2c327c6ed5bc45c" name="Net/HL7.php" role="php" />
-   <file baseinstalldir="/" md5sum="a0a9100554240d7a7d27db680f06c34f" name="Net/HL7/Connection.php" role="php" />
-   <file baseinstalldir="/" md5sum="61fe888fdf073f15372871b6a179aa2a" name="Net/HL7/Message.php" role="php" />
-   <file baseinstalldir="/" md5sum="7e08de7882aa50d839346d9efe91c4e1" name="Net/HL7/Segment.php" role="php" />
-   <file baseinstalldir="/" md5sum="bcd96c75d6ad78a6bc766d8b41f821c3" name="Net/HL7/Messages/ACK.php" role="php" />
-   <file baseinstalldir="/" md5sum="f80441a25a20c7fe3d1bcd5455bba779" name="Net/HL7/Segments/MSH.php" role="php" />
-   <file baseinstalldir="/" md5sum="10b15d40e66733c98aff1345d9424a7d" name="tests/ack.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="f7290a6df489cfa95917eba8adabc1ce" name="tests/connection.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="5ae89b94c57a0085345abef7d2a5d53f" name="tests/message.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="8f34f397ca03d09773e2f0e295f4b7ab" name="tests/msh.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="84065d850670f2864a988d0f2477c608" name="tests/segment.phpt" role="test" />
-   <file baseinstalldir="/" md5sum="0b3a16eafb842d9e7170ecd552f67b62" name="tests/test_base.php" role="test" />
+   <file baseinstalldir="/" md5sum="01941d5bd3bf5e506b2f45af3bae8bc0" name="/docs/README" role="data" />
+   <file baseinstalldir="/" md5sum="1ca93ea8f58a90683e74add5ad451342" name="/Net/HL7.php" role="php" />
+   <file baseinstalldir="/" md5sum="17582891e0ad564b75c1dbc95e98ed2f" name="/Net/HL7/Connection.php" role="php" />
+   <file baseinstalldir="/" md5sum="bc06f271a877ed99b95e24aec18c27a3" name="/Net/HL7/Message.php" role="php" />
+   <file baseinstalldir="/" md5sum="a2ecf0866ff25e305077ff0921122137" name="/Net/HL7/Segment.php" role="php" />
+   <file baseinstalldir="/" md5sum="ef9a1ec54b9ed8bac1da71f6af87afef" name="/Net/HL7/Messages/ACK.php" role="php" />
+   <file baseinstalldir="/" md5sum="cc7b1d8a0964007b250c5567095e7a51" name="/Net/HL7/Segments/MSH.php" role="php" />
+   <file baseinstalldir="/" md5sum="10b15d40e66733c98aff1345d9424a7d" name="/tests/ack.phpt" role="data" />
+   <file baseinstalldir="/" md5sum="f7290a6df489cfa95917eba8adabc1ce" name="/tests/connection.phpt" role="data" />
+   <file baseinstalldir="/" md5sum="5ae89b94c57a0085345abef7d2a5d53f" name="/tests/message.phpt" role="data" />
+   <file baseinstalldir="/" md5sum="8f34f397ca03d09773e2f0e295f4b7ab" name="/tests/msh.phpt" role="data" />
+   <file baseinstalldir="/" md5sum="84065d850670f2864a988d0f2477c608" name="/tests/segment.phpt" role="data" />
+   <file baseinstalldir="/" md5sum="0b3a16eafb842d9e7170ecd552f67b62" name="/tests/test_base.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -81,6 +80,23 @@ QA release
 Package 2.0
 Bug #12705 - PHP5 vs references
 Bug #16415 - Undefined indexes
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-01-06</date>
+   <license>PHP License, see http://www.php.net/license/3_0.txt</license>
+   <notes>
+QA release
+PHP 5
+Bug #19203 Deprecated warnings
    </notes>
   </release>
  </changelog>
