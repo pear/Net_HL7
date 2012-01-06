@@ -56,7 +56,7 @@ Bug #16415 - Undefined indexes
  <dependencies>
   <required>
    <php>
-    <min>4.0.0</min>
+    <min>5.0.0</min>
    </php>
    <pearinstaller>
     <min>1.4.0b1</min>
