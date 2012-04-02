@@ -39,7 +39,7 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
      * @package    Net_HL7
      * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
      */
-    public function __construct($req = "")
+    public function __construct($req = "", $reqMsh = null)
     {
         parent::__construct();
 
