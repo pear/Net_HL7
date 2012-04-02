@@ -116,7 +116,7 @@ class Net_HL7_Segments_MSH extends Net_HL7_Segment {
      * @return boolean
      * @access public
      */
-    function setField($index, $value)
+    function setField($index, $value = '')
     {
         if ($index == 1) {
             if (strlen($value) != 1) {
