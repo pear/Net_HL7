@@ -237,7 +237,7 @@ class Net_HL7_Message {
      * @access public
      * @see Net_HL7_Segment
      */
-    function insertSegment(&$segment, $idx = "")
+    function insertSegment($segment, $idx = "")
     {
         if ((!$idx) || ($idx > count($this->_segments))) {
             trigger_error("Index out of range", E_USER_WARNING);
@@ -251,14 +251,14 @@ class Net_HL7_Message {
 
         if ($idx == 0) {
             $this->_resetCtrl($segment);
-            array_unshift($this->_segments, &$segment);
+            array_unshift($this->_segments, $segment);
         } elseif ($idx == count($this->_segments)) {
-            array_push($this->_segments, &$segment);
+            array_push($this->_segments, $segment);
         } else {
             $this->_segments =
                 array_merge(
                             array_slice($this->_segments, 0, $idx),
-                            array(&$segment),
+                            array($segment),
                             array_slice($this->_segments, $idx)
                             );
         }
@@ -343,7 +343,7 @@ class Net_HL7_Message {
      * @access public
      * @see Net_HL7_Segment
      */
-    public function setSegment(&$segment, $idx)
+    public function setSegment($segment, $idx)
     {
         if ((!isset($idx)) || $idx > count($this->_segments)) {
             trigger_error("Index out of range", E_USER_WARNING);
@@ -359,7 +359,7 @@ class Net_HL7_Message {
             $this->_resetCtrl($segment);
         }
 
-        $this->_segments[$idx] = &$segment;
+        $this->_segments[$idx] = $segment;
 
         return true;
     }
@@ -373,7 +373,7 @@ class Net_HL7_Message {
      * @access private
      * @see Net_HL7_Segment
      */
-    public function _resetCtrl(&$segment)
+    public function _resetCtrl($segment)
     {
         if ($segment->getField(1)) {
             $this->_fieldSeparator = $segment->getField(1);
