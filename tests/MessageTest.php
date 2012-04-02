@@ -19,8 +19,8 @@ class MessageTest extends PHPUnit_Framework_TestCase {
         $msg->addSegment(new Net_HL7_Segments_MSH());
         $msg->addSegment($seg1);
 
-        $seg0 =& $msg->getSegmentByIndex(0);
-        $seg1 =& $msg->getSegmentByIndex(1);
+        $seg0 = $msg->getSegmentByIndex(0);
+        $seg1 = $msg->getSegmentByIndex(1);
 
         $seg0->setField(3, "XXX");
 
@@ -30,12 +30,12 @@ class MessageTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue($seg1->getField(2) == "Foo", "2nd field of PID");
 
         // Check references
-        $segX =& $msg->getSegmentByIndex(0);
+        $segX = $msg->getSegmentByIndex(0);
         $this->assertTrue($segX->getField(3) == "XXX", "3d field of MSH");
 
         $msg = new Net_HL7_Message("MSH|^~\\&|1|\rPID|||xxx|\r");
 
-        $seg0 =& $msg->getSegmentByIndex(0);
+        $seg0 = $msg->getSegmentByIndex(0);
 
         $this->assertTrue($msg->toString() == "MSH|^~\\&|1|\rPID|||xxx|\r", "String representation of message");
 
@@ -67,7 +67,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
         #
         $msg = new Net_HL7_Message("MSH*.%#@*1\rPID***x.x@y@z.z\r");
 
-        $seg1 =& $msg->getSegmentByIndex(1);
+        $seg1 = $msg->getSegmentByIndex(1);
         $comps = $seg1->getField(3);
 
         $this->assertTrue($comps[0] == "x", "Composed field with . as separator");
@@ -77,25 +77,25 @@ class MessageTest extends PHPUnit_Framework_TestCase {
         #
         //$this->assertTrue(! defined(new Net::HL7::Message("MSH|^~\\&*1\rPID|||xxx\r")), "Field separator not repeated");
 
-        $seg2 =& new Net_HL7_Segment("XXX");
+        $seg2 = new Net_HL7_Segment("XXX");
 
         $msg->addSegment($seg2);
 
         $msg->removeSegmentByIndex(1);
 
-        $seg1 =& $msg->getSegmentByIndex(1);
+        $seg1 = $msg->getSegmentByIndex(1);
 
         $this->assertTrue($seg1->getName() == $seg2->getName(), "Add/remove segment");
 
-        $seg3 =& new Net_HL7_Segment("YYY");
-        $seg4 =& new Net_HL7_Segment("ZZZ");
+        $seg3 = new Net_HL7_Segment("YYY");
+        $seg4 = new Net_HL7_Segment("ZZZ");
 
         $msg->insertSegment($seg3, 1);
         $msg->insertSegment($seg4, 1);
 
-        $seg3 =& $msg->getSegmentByIndex(3);
+        $seg3 = $msg->getSegmentByIndex(3);
 
-        $seg4 =& $msg->getSegmentByIndex(4);
+        $seg4 = $msg->getSegmentByIndex(4);
 
         $this->assertTrue($seg3->getName() == $seg2->getName(), "Insert segment");
 
@@ -103,7 +103,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
         $msg->removeSegmentByIndex(1);
         $msg->removeSegmentByIndex(6);
 
-        $seg5 =& new Net_HL7_Segment("ZZ1");
+        $seg5 = new Net_HL7_Segment("ZZ1");
 
         # This shouldn't be possible
         @$msg->insertSegment($seg5, 3);
@@ -124,7 +124,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
 
         $this->assertTrue(count($msg->getSegmentsByName("MSH")) == 1, "Number of MSH segments");
 
-        $msh2 =& new Net_HL7_Segments_MSH();
+        $msh2 = new Net_HL7_Segments_MSH();
 
         $msg->addSegment($msh2);
 
@@ -133,9 +133,9 @@ class MessageTest extends PHPUnit_Framework_TestCase {
 
         # Fumble 'round with ctrl chars
         #
-        $msg =& new Net_HL7_Message();
+        $msg = new Net_HL7_Message();
 
-        $msh =& new Net_HL7_Segments_MSH(array());
+        $msh = new Net_HL7_Segments_MSH(array());
 
         $msh->setField(1, "*");
         $msh->setField(2, "abcd");
@@ -149,7 +149,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
 
         $this->assertTrue($msg->toString() == "MSH|^~\\&|\r", "Change MSH after add");
 
-        $msh =& new Net_HL7_Segments_MSH(array());
+        $msh = new Net_HL7_Segments_MSH(array());
 
         $msh->setField(1, "*");
         $msh->setField(2, "abcd");
@@ -159,7 +159,7 @@ class MessageTest extends PHPUnit_Framework_TestCase {
 
         $str = 'MSH|^~\&|CodeRyte HL7|CodeRyte HQ|VISION|MISYS|200404061744||DFT^P03|TC-2743|P^T|2.3|||AL|NE||ASCII||| |';
 
-        $msg =& new Net_HL7_Message($str);
+        $msg = new Net_HL7_Message($str);
 
         $this->assertTrue($msg->toString(1) == "$str\n", "Message from string and to string with subcomponents");
 
