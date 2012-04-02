@@ -19,20 +19,22 @@
 // $Id: Connection.php,v 1.7 2004/08/06 07:38:54 wyldebeast Exp $
 
 require_once 'Net/HL7/Message.php';
-
+require_once 'Net/Socket.php';
 
 /**
  * Usage:
  * <code>
- * $conn = new Net_HL7_Connection('localhost', 8089);
+ * $socket = new Net_Socket();
+ * $socket->connect('localhost', 8089);
+ *
+ * $conn = new Net_HL7_Connection($socket);
+ *
  *
  * $req = new Net_HL7_Message();
  *
  * ... set some request attributes
  *
  * $res = $conn->send($req);
- *
- * $conn->close();
  * </code>
  *
  * The Net_HL7_Connection object represents the tcp connection to the
@@ -65,7 +67,6 @@ class Net_HL7_Connection {
     var $_HANDLE;
     var $_MESSAGE_PREFIX;
     var $_MESSAGE_SUFFIX;
-    var $_MAX_READ;
 
 
     /**
@@ -76,41 +77,18 @@ class Net_HL7_Connection {
      * @param int Port to connect to
      * @return boolean
      */
-    function Net_HL7_Connection($host, $port)
+    public function __construct(Net_Socket $socket)
     {
-        $this->_HANDLE = $this->_connect($host, $port);
+        $this->setSocket($socket);
         $this->_MESSAGE_PREFIX = "\013";
         $this->_MESSAGE_SUFFIX = "\034\015";
-        $this->_MAX_READ       = 8192;
 
         return true;
     }
 
-
-    /**
-     * Connect to specified host and port
-     *
-     * @param mixed Host to connect to
-     * @param int Port to connect to
-     * @return socket
-     * @access private
-     */
-    function _connect($host, $port)
-    {
-        $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        if ($socket < 0) {
-            trigger_error("create failed: " . socket_strerror($socket), E_USER_ERROR);
-        }
-
-        $result = socket_connect($socket, $host, $port);
-
-        if ($result < 0) {
-            trigger_error("connect failed: " . socket_strerror($result), E_USER_ERROR);
-        }
-
-        return $socket;
+    public function setSocket(Net_Socket $socket) {
+        $this->_HANDLE = $socket;
     }
-
 
     /**
      * Sends a Net_HL7_Message object over this connection.
@@ -125,11 +103,11 @@ class Net_HL7_Connection {
         $handle = $this->_HANDLE;
         $hl7Msg = $req->toString();
 
-        socket_write($handle, $this->_MESSAGE_PREFIX . $hl7Msg . $this->_MESSAGE_SUFFIX);
+        $handle->write($this->_MESSAGE_PREFIX . $hl7Msg . $this->_MESSAGE_SUFFIX);
 
         $data = "";
 
-        while(($buf = socket_read($handle, 256, PHP_BINARY_READ)) !== false) {
+        while(($buf = $handle->read(256)) !== false) {
             $data .= $buf;
 
             if(preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $buf))
@@ -144,19 +122,4 @@ class Net_HL7_Connection {
 
         return $resp;
     }
-
-
-    /**
-     * Close the connection.
-     *
-     * @access public
-     * @return boolean
-     */
-    function close()
-    {
-        socket_close($this->_HANDLE);
-        return true;
-    }
 }
-
-?>

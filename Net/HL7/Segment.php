@@ -50,12 +50,12 @@ class Net_HL7_Segment {
      * @param mixed Name of the segment
      * @param array Fields for segment
      */
-    function Net_HL7_Segment($name, $fields = array())
+    function __construct($name, $fields = array())
     {
         // Is the name 3 upper case characters?
         //
         if ((!$name) || (strlen($name) != 3) || (strtoupper($name) != $name)) {
-            trigger_error("Name should be 3 characters, uppercase", E_USER_ERROR);
+            throw new InvalidArgumentException("Name should be 3 characters, uppercase");
         }
 
         $this->_fields = array();

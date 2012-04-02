@@ -62,9 +62,9 @@ class Net_HL7_Segments_MSH extends Net_HL7_Segment {
      * will be created with the MSH 1,2,7,10 and 12 fields filled in
      * for convenience.
      */
-    function Net_HL7_Segments_MSH($fields = NULL, $hl7Globals = NULL)
+    function __construct($fields = NULL, $hl7Globals = NULL)
     {
-        parent::Net_HL7_Segment("MSH", $fields);
+        parent::__construct("MSH", $fields);
 
         // Only fill default fields if no fields array is given
         //

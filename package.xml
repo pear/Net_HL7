@@ -19,8 +19,8 @@ this initiative.</description>
   <email>dokter@w20e.com</email>
   <active>no</active>
  </lead>
- <date>2012-01-06</date>
- <time>16:17:38</time>
+ <date>2012-04-03</date>
+ <time>08:53:48</time>
  <version>
   <release>0.2.0</release>
   <api>0.2.0</api>
@@ -38,18 +38,17 @@ Bug #19203 Deprecated warnings
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="01941d5bd3bf5e506b2f45af3bae8bc0" name="/docs/README" role="data" />
-   <file baseinstalldir="/" md5sum="1ca93ea8f58a90683e74add5ad451342" name="/Net/HL7.php" role="php" />
-   <file baseinstalldir="/" md5sum="17582891e0ad564b75c1dbc95e98ed2f" name="/Net/HL7/Connection.php" role="php" />
-   <file baseinstalldir="/" md5sum="bc06f271a877ed99b95e24aec18c27a3" name="/Net/HL7/Message.php" role="php" />
-   <file baseinstalldir="/" md5sum="a2ecf0866ff25e305077ff0921122137" name="/Net/HL7/Segment.php" role="php" />
-   <file baseinstalldir="/" md5sum="ef9a1ec54b9ed8bac1da71f6af87afef" name="/Net/HL7/Messages/ACK.php" role="php" />
-   <file baseinstalldir="/" md5sum="cc7b1d8a0964007b250c5567095e7a51" name="/Net/HL7/Segments/MSH.php" role="php" />
-   <file baseinstalldir="/" md5sum="10b15d40e66733c98aff1345d9424a7d" name="/tests/ack.phpt" role="data" />
-   <file baseinstalldir="/" md5sum="f7290a6df489cfa95917eba8adabc1ce" name="/tests/connection.phpt" role="data" />
-   <file baseinstalldir="/" md5sum="5ae89b94c57a0085345abef7d2a5d53f" name="/tests/message.phpt" role="data" />
-   <file baseinstalldir="/" md5sum="8f34f397ca03d09773e2f0e295f4b7ab" name="/tests/msh.phpt" role="data" />
-   <file baseinstalldir="/" md5sum="84065d850670f2864a988d0f2477c608" name="/tests/segment.phpt" role="data" />
-   <file baseinstalldir="/" md5sum="0b3a16eafb842d9e7170ecd552f67b62" name="/tests/test_base.php" role="php" />
+   <file baseinstalldir="/" md5sum="5ca1fb0aca8a1d5112f2d2123a534a88" name="/Net/HL7.php" role="php" />
+   <file baseinstalldir="/" md5sum="ff1bb3d6067581d28ad50b61ac7613b8" name="/Net/HL7/Connection.php" role="php" />
+   <file baseinstalldir="/" md5sum="ac0fb9ece6ce5af622353dded5b48c45" name="/Net/HL7/Message.php" role="php" />
+   <file baseinstalldir="/" md5sum="1a51519b2032641fef0e6405a567e635" name="/Net/HL7/Segment.php" role="php" />
+   <file baseinstalldir="/" md5sum="bdc39832b95bdafbef6926630f5c8b72" name="/Net/HL7/Messages/ACK.php" role="php" />
+   <file baseinstalldir="/" md5sum="be7d79d18d0fa5614ce3f25637f62a24" name="/Net/HL7/Segments/MSH.php" role="php" />
+   <file baseinstalldir="/" md5sum="d06c139ed30395d6008d4b719516feeb" name="/tests/AckTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="c06a83b2a8c15b389e5499a15e3f54b3" name="/tests/ConnectionTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="77090f8237a29172bdf2c6913f41fee2" name="/tests/MessageTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="c38db2f379ebadbef2737ba29b27f6b7" name="/tests/MSHTest.php" role="php" />
+   <file baseinstalldir="/" md5sum="9ecdec5e1e6a12f3a0aef158fff4514c" name="/tests/SegmentTest.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -60,6 +59,10 @@ Bug #19203 Deprecated warnings
    <pearinstaller>
     <min>1.4.0b1</min>
    </pearinstaller>
+   <package>
+    <name>Net_Socket</name>
+    <channel>pear.php.net</channel>
+   </package>
   </required>
  </dependencies>
  <phprelease />
@@ -91,7 +94,7 @@ Bug #16415 - Undefined indexes
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2012-01-06</date>
+   <date>2012-04-03</date>
    <license>PHP License, see http://www.php.net/license/3_0.txt</license>
    <notes>
 QA release

@@ -69,22 +69,20 @@ class ConnectionTest extends PHPUnit_Framework_TestCase {
         }
         */
 
-        $conn = new Net_HL7_Connection("localhost", 12002);
+        $socket = $this->getMock('Net_Socket');
 
-        $this->assertTrue($conn, "Trying to connect");
+        $socket->expects($this->once())
+                ->method('write')
+                ->with("\013" . $msg->toString() . "\034\015");
 
-        $conn || exit -1;
+        $socket->expects($this->once())
+                ->method('read')
+                ->will($this->returnValue("MSH*^~\\&*1\rPID***xxx\r" . "\034\015"));
 
-        $this->assertTrue($conn, "Sending message\n" . $msg->toString(1));
+        $conn = new Net_HL7_Connection($socket);
 
         $resp = $conn->send($msg);
 
-        $resp || exit -1;
-
-        $msh = $resp->getSegmentByIndex(0);
-
-        $this->assertTrue($msh->getField(9) == "ACK", "Checking ACK field");
-
-        $conn->close();
+        $this->assertTrue($resp instanceof Net_HL7_Message);
     }
 }
