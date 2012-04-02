@@ -123,7 +123,7 @@ class Net_HL7_Segment {
      */
     function getField($index)
     {
-        return $this->_fields[$index];
+        return isset($this->_fields[$index]) ? $this->_fields[$index] : null;
     }
 
 
