@@ -179,7 +179,7 @@ class Net_HL7 {
     public function setEscapeCharacter($value)
     {
         if (strlen($value) != 1) {
-            {return false;
+            return false;
         }
 
         return $this->_setGlobal('ESCAPE_CHARACTER', $value);
