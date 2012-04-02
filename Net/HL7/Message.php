@@ -209,7 +209,7 @@ class Net_HL7_Message {
      * @access public
      * @see Net_HL7_Segment
      */
-    public function addSegment(&$segment)
+    public function addSegment($segment)
     {
         if (!is_a($segment, "Net_HL7_Segment")) {
             trigger_error("The object is not a Net_HL7_Segment", E_USER_WARNING);
@@ -219,7 +219,7 @@ class Net_HL7_Message {
             $this->_resetCtrl($segment);
         }
 
-        array_push($this->_segments, &$segment);
+        array_push($this->_segments, $segment);
 
         return true;
     }
