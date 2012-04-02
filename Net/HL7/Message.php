@@ -237,7 +237,7 @@ class Net_HL7_Message {
      * @access public
      * @see Net_HL7_Segment
      */
-    function insertSegment($segment, $idx = "")
+        function insertSegment($segment, $idx = "")
     {
         if ((!$idx) || ($idx > count($this->_segments))) {
             trigger_error("Index out of range", E_USER_WARNING);
@@ -277,7 +277,7 @@ class Net_HL7_Message {
      * @access public
      * @see Net_HL7_Segment
      */
-    public function &getSegmentByIndex($index)
+    public function getSegmentByIndex($index)
     {
         if ($index >= count($this->_segments)) {
             return NULL;
