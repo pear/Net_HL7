@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "Net_HL7": "./"
+            "Net": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/Net_HL7",
@@ -23,7 +23,8 @@
     },
     "type": "library",
     "require": {
-        "pear/pear_exception": "*"
+        "pear/pear_exception": "*",
+        "pear/net_socket": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
