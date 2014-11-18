@@ -94,11 +94,12 @@ class Net_HL7_Connection {
      * Sends a Net_HL7_Message object over this connection.
      *
      * @param object Instance of Net_HL7_Message
+     * @param string $responseCharEncoding The expected character encoding of the response.
      * @return object Instance of Net_HL7_Message
      * @access public
      * @see Net_HL7_Message
      */
-    function send($req)
+    function send($req, $responseCharEncoding = 'UTF-8')
     {
         $handle = $this->_HANDLE;
         $hl7Msg = $req->toString();
@@ -107,16 +108,19 @@ class Net_HL7_Connection {
 
         $data = "";
 
-        while(($buf = $handle->read(256)) !== false) {
+        while(($buf = $handle->read(1)) !== false) {
             $data .= $buf;
 
-            if(preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $buf))
+            if(preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $data))
                 break;
         }
 
         // Remove message prefix and suffix
         $data = preg_replace("/^" . $this->_MESSAGE_PREFIX . "/", "", $data);
         $data = preg_replace("/" . $this->_MESSAGE_SUFFIX . "$/", "", $data);
+
+        // set character encoding
+        $data = mb_convert_encoding($data, $responseCharEncoding);
 
         $resp = new Net_HL7_Message($data);
 
