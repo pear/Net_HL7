@@ -1,5 +1,4 @@
 <?php
-require_once 'PHPUnit/Framework/TestCase.php';
 require_once "Net/HL7/Segment.php";
 require_once "Net/HL7/Segments/MSH.php";
 class MSHTest extends PHPUnit_Framework_TestCase {

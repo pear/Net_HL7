@@ -4,7 +4,7 @@ require_once "Net/HL7/Segments/MSH.php";
 require_once "Net/HL7/Segment.php";
 require_once "Net/HL7/Message.php";
 require_once "Net/HL7/Messages/ACK.php";
-require_once 'PHPUnit/Framework/TestCase.php';
+
 class AckTest extends PHPUnit_Framework_TestCase {
 
     public function test() {

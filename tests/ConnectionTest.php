@@ -3,7 +3,7 @@
 require_once "Net/HL7/Segments/MSH.php";
 require_once "Net/HL7/Message.php";
 require_once "Net/HL7/Connection.php";
-require_once 'PHPUnit/Framework/TestCase.php';
+
 class ConnectionTest extends PHPUnit_Framework_TestCase {
 
     public function test() {

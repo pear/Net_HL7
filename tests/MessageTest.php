@@ -4,7 +4,6 @@ require_once "Net/HL7/Message.php";
 require_once "Net/HL7/Segment.php";
 require_once "Net/HL7/Segments/MSH.php";
 require_once "Net/HL7.php";
-require_once 'PHPUnit/Framework/TestCase.php';
 
 class MessageTest extends PHPUnit_Framework_TestCase {
 
