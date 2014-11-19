@@ -107,10 +107,10 @@ class Net_HL7_Connection {
 
         $data = "";
 
-        while(($buf = $handle->read(256)) !== false) {
+        while(($buf = $handle->read(1)) !== false) {
             $data .= $buf;
 
-            if(preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $buf))
+            if(preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $data))
                 break;
         }
 
