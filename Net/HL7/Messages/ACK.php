@@ -18,7 +18,8 @@
 //
 // $Id: ACK.php,v 1.5 2004/07/05 08:57:28 wyldebeast Exp $
 
-class Net_HL7_Messages_ACK extends Net_HL7_Message {
+class Net_HL7_Messages_ACK extends Net_HL7_Message
+{
 
     var $_ACK_TYPE;
 
@@ -32,12 +33,12 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
      * can be used in HL7 servers to create an acknowledgement for an
      * incoming message.
      *
-     * @version    0.10
-     * @author     D.A.Dokter <dokter@w20e.com>
-     * @access     public
-     * @category   Networking
-     * @package    Net_HL7
-     * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
+     * @version  0.10
+     * @author   D.A.Dokter <dokter@w20e.com>
+     * @access   public
+     * @category Networking
+     * @package  Net_HL7
+     * @license  http://www.php.net/license/3_0.txt  PHP License 3.0
      */
     public function __construct($req = "", $reqMsh = null)
     {
@@ -48,12 +49,10 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
 
             if ($msh) {
                 $msh = new Net_HL7_Segments_MSH($msh->getFields(1));
-            }
-            else {
+            } else {
                 $msh = new Net_HL7_Segments_MSH();
             }
-        }
-        else {
+        } else {
             $msh = new Net_HL7_Segments_MSH();
         }
 
@@ -64,8 +63,7 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
         if ($req && ($msh->getField(15) || $msh->getField(16))) {
             $this->_ACK_TYPE = "E";
             $msa->setField(1, "CA");
-        }
-        else {
+        } else {
             $this->_ACK_TYPE = "N";
             $msa->setField(1, "AA");
         }
@@ -95,8 +93,9 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
      *  mode (normal or enhanced) based upon the request, if not provided.
      * The message provided in $msg will be set in MSA 3.
      *
-     * @param mixed Code to use in acknowledgement
-     * @param mixed Acknowledgement message
+     * @param mixed  $code Code to use in acknowledgement
+     * @param string $msg  Acknowledgement message
+     *
      * @return boolean
      * @access public
      */
@@ -116,18 +115,20 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
 
         $seg1 = $this->getSegmentByIndex(1);
         $seg1->setField(1, $code);
-        if ($msg) $seg1->setField(3, $msg);
+        if ($msg) {
+            $seg1->setField(3, $msg);
+        }
 
         return true;
     }
-
 
     /**
      * Set the error message for the acknowledgement. This will also set the
      * error code to either AE or CE, depending on the mode of the incoming
      * message.
      *
-     * @param mixed Error message
+     * @param string $msg Error message
+     *
      * @return boolean
      * @access public
      */
@@ -137,5 +138,3 @@ class Net_HL7_Messages_ACK extends Net_HL7_Message {
         return true;
     }
 }
-
-?>

@@ -54,15 +54,15 @@ require_once 'Net/Socket.php';
  * _MESSAGE_SUFFIX
  * End of message signal for HL7 server. Defaults to \034\015.
  *
- *
- * @version    0.10
- * @author     D.A.Dokter <dokter@w20e.com>
- * @access     public
- * @category   Networking
- * @package    Net_HL7
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @category Networking
+ * @package  Net_HL7
+ * @author   D.A.Dokter <dokter@w20e.com>
+ * @license  http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @version  0.10
+ * @access   public
  */
-class Net_HL7_Connection {
+class Net_HL7_Connection
+{
 
     var $_HANDLE;
     var $_MESSAGE_PREFIX;
@@ -73,8 +73,8 @@ class Net_HL7_Connection {
      * Creates a connection to a HL7 server, or returns undef when a
      * connection could not be established.are:
      *
-     * @param mixed Host to connect to
-     * @param int Port to connect to
+     * @param Net_Socket $socket Socket for comms
+     *
      * @return boolean
      */
     public function __construct(Net_Socket $socket)
@@ -86,18 +86,26 @@ class Net_HL7_Connection {
         return true;
     }
 
-    public function setSocket(Net_Socket $socket) {
+    /**
+     * Set the socket object
+     *
+     * @param Net_Socket $socket Socket for comms
+     *
+     * @return void
+     */
+    public function setSocket(Net_Socket $socket)
+    {
         $this->_HANDLE = $socket;
     }
 
     /**
      * Sends a Net_HL7_Message object over this connection.
      *
-     * @param object Instance of Net_HL7_Message
-     * @param string $responseCharEncoding The expected character encoding of the response.
+     * @param object $req                  Instance of Net_HL7_Message
+     * @param string $responseCharEncoding Expected character encoding of response.
+     *
      * @return object Instance of Net_HL7_Message
-     * @access public
-     * @see Net_HL7_Message
+     * @see    Net_HL7_Message
      */
     function send($req, $responseCharEncoding = 'UTF-8')
     {
@@ -108,11 +116,12 @@ class Net_HL7_Connection {
 
         $data = "";
 
-        while(($buf = $handle->read(1)) !== false) {
+        while (($buf = $handle->read(1)) !== false) {
             $data .= $buf;
 
-            if(preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $data))
+            if (preg_match("/" . $this->_MESSAGE_SUFFIX . "$/", $data)) {
                 break;
+            }
         }
 
         // Remove message prefix and suffix

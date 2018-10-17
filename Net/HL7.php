@@ -27,14 +27,15 @@
  * in PHP, like the HL7 escape character. To be able to set these
  * values, escape the special characters.
  *
- * @version    0.1.0
- * @author     D.A.Dokter <dokter@w20e.com>
- * @access     public
- * @category   Networking
- * @package    Net_HL7
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @category Networking
+ * @package  Net_HL7
+ * @author   D.A.Dokter <dokter@w20e.com>
+ * @license  http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @version  0.1.0
+ * @access   public
  */
-class Net_HL7 {
+class Net_HL7
+{
 
     /**
      * Holds all global HL7 settings.
@@ -46,7 +47,8 @@ class Net_HL7 {
      * Create a new instance of the HL7 factory, and set global
      * defaults.
      */
-    public function __construct() {
+    public function __construct()
+    {
 
         $this->_hl7Globals['SEGMENT_SEPARATOR'] = '\015';
         $this->_hl7Globals['FIELD_SEPARATOR'] = '|';
@@ -63,7 +65,8 @@ class Net_HL7 {
      * Create a new Net_HL7_Message, using the global HL7 variables as
      * defaults.
      *
-     * @param string Text representation of an HL7 message
+     * @param string $msgStr Text representation of an HL7 message
+     *
      * @return object Net_HL7_Message
      */
     public function createMessage($msgStr = "")
@@ -88,7 +91,8 @@ class Net_HL7 {
      * Set the component separator to be used by the factory. Should
      * be a single character. Default ^
      *
-     * @param string Component separator char.
+     * @param string $value Component separator char.
+     *
      * @return boolean true if value has been set.
      */
     public function setComponentSeparator($value)
@@ -105,7 +109,8 @@ class Net_HL7 {
      * Set the subcomponent separator to be used by the factory. Should
      * be a single character. Default: &
      *
-     * @param string Subcomponent separator char.
+     * @param string $value Subcomponent separator char.
+     *
      * @return boolean true if value has been set.
      */
     public function setSubcomponentSeparator($value)
@@ -122,7 +127,8 @@ class Net_HL7 {
      * Set the repetition separator to be used by the factory. Should
      * be a single character. Default: ~
      *
-     * @param string Repetition separator char.
+     * @param string $value Repetition separator char.
+     *
      * @return boolean true if value has been set.
      */
     public function setRepetitionSeparator($value)
@@ -139,7 +145,8 @@ class Net_HL7 {
      * Set the field separator to be used by the factory. Should
      * be a single character. Default: |
      *
-     * @param string Field separator char.
+     * @param string $value Field separator char.
+     *
      * @return boolean true if value has been set.
      */
     public function setFieldSeparator($value)
@@ -156,7 +163,8 @@ class Net_HL7 {
      * Set the segment separator to be used by the factory. Should
      * be a single character. Default: \015
      *
-     * @param string Segment separator char.
+     * @param string $value Segment separator char.
+     *
      * @return boolean true if value has been set.
      */
     public function setSegmentSeparator($value)
@@ -173,7 +181,8 @@ class Net_HL7 {
      * Set the escape character to be used by the factory. Should
      * be a single character. Default: \
      *
-     * @param string Escape character.
+     * @param string $value Escape character.
+     *
      * @return boolean true if value has been set.
      */
     public function setEscapeCharacter($value)
@@ -189,7 +198,8 @@ class Net_HL7 {
     /**
      * Set the HL7 version to be used by the factory.
      *
-     * @param string HL7 version character.
+     * @param string $value HL7 version character.
+     *
      * @return boolean true if value has been set.
      */
     public function setHL7Version($value)
@@ -201,7 +211,8 @@ class Net_HL7 {
     /**
      * Set the NULL string to be used by the factory.
      *
-     * @param string NULL string.
+     * @param string $value NULL string.
+     *
      * @return boolean true if value has been set.
      */
     public function setNull($value)
@@ -215,7 +226,8 @@ class Net_HL7 {
      *
      * @return string null value
      */
-    public function getNull() {
+    public function getNull() 
+    {
 
         return $this->_hl7Globals['NULL'];
     }
@@ -224,12 +236,12 @@ class Net_HL7 {
     /**
      * Set the HL7 global variable
      *
-     * @access private
-     * @param string name
-     * @param string value
+     * @param string $name  name
+     * @param string $value value
+     *
      * @return boolean True when value has been set, false otherwise.
      */
-    public function _setGlobal($name, $value)
+    private function _setGlobal($name, $value)
     {
         $this->_hl7Globals[$name] = $value;
 
