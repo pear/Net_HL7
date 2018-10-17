@@ -43,14 +43,15 @@ require_once 'Net/HL7.php';
  * ESCAPE_CHARACTER and SUBCOMPONENT_SEPARATOR. These fields default
  * to ^, ~, \ and & respectively.
  *
- * @version    $Revision: 1.8 $
- * @author     D.A.Dokter <dokter@w20e.com>
- * @access     public
- * @category   Networking
- * @package    Net_HL7
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
+ * @version  $Revision: 1.8 $
+ * @author   D.A.Dokter <dokter@w20e.com>
+ * @access   public
+ * @category Networking
+ * @package  Net_HL7
+ * @license  http://www.php.net/license/3_0.txt  PHP License 3.0
  */
-class Net_HL7_Segments_MSH extends Net_HL7_Segment {
+class Net_HL7_Segments_MSH extends Net_HL7_Segment
+{
 
     /**
      * Create an instance of the MSH segment.
@@ -62,7 +63,7 @@ class Net_HL7_Segments_MSH extends Net_HL7_Segment {
      * will be created with the MSH 1,2,7,10 and 12 fields filled in
      * for convenience.
      */
-    function __construct($fields = NULL, $hl7Globals = NULL)
+    public function __construct($fields = null, $hl7Globals = null)
     {
         parent::__construct("MSH", $fields);
 
@@ -79,15 +80,15 @@ class Net_HL7_Segments_MSH extends Net_HL7_Segment {
                 //
                 $this->setField(10, $this->getField(7) . rand(10000, 99999));
                 $this->setField(12, '2.2');
-            }
-            else {
+            } else {
                 $this->setField(1, $hl7Globals['FIELD_SEPARATOR']);
-                $this->setField(2,
-                                $hl7Globals['COMPONENT_SEPARATOR'] .
+                $this->setField(
+                    2,
+                    $hl7Globals['COMPONENT_SEPARATOR'] .
                                 $hl7Globals['REPETITION_SEPARATOR'] .
                                 $hl7Globals['ESCAPE_CHARACTER'] .
                                 $hl7Globals['SUBCOMPONENT_SEPARATOR']
-                                );
+                );
                 $this->setField(7, strftime("%Y%m%d%H%M%S"));
 
                 // Set ID field
@@ -111,12 +112,13 @@ class Net_HL7_Segments_MSH extends Net_HL7_Segment {
      * and SUBCOMPONENT_SEPARATOR for the message, if the string is of
      * length 4.
      *
-     * @param int Index of field
-     * @param mixed Value
+     * @param int   $index Index of field
+     * @param mixed $value Value
+
      * @return boolean
      * @access public
      */
-    function setField($index, $value = '')
+    public function setField($index, $value = '')
     {
         if ($index == 1) {
             if (strlen($value) != 1) {
@@ -132,7 +134,5 @@ class Net_HL7_Segments_MSH extends Net_HL7_Segment {
 
         return parent::setField($index, $value);
     }
-
 }
 
-?>

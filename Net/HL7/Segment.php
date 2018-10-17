@@ -18,7 +18,8 @@
 //
 // $Id: Segment.php,v 1.6 2004/07/05 08:57:28 wyldebeast Exp $
 
-class Net_HL7_Segment {
+class Net_HL7_Segment
+{
 
     var $_fields;
 
@@ -41,19 +42,19 @@ class Net_HL7_Segment {
      * echo $seg->getField(1);
      * </code>
      *
-     * @version    0.10
-     * @author     D.A.Dokter <dokter@w20e.com>
-     * @access     public
-     * @category   Networking
-     * @package    Net_HL7
-     * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
-     * @param mixed Name of the segment
-     * @param array Fields for segment
+     * @param strng $name   Name of the segment
+     * @param array $fields Fields for segment
+     *
+     * @version  0.10
+     * @author   D.A.Dokter <dokter@w20e.com>
+     * @access   public
+     * @category Networking
+     * @package  Net_HL7
+     * @license  http://www.php.net/license/3_0.txt  PHP License 3.0
      */
     function __construct($name, $fields = array())
     {
         // Is the name 3 upper case characters?
-        //
         if ((!$name) || (strlen($name) != 3) || (strtoupper($name) != $name)) {
             throw new InvalidArgumentException("Name should be 3 characters, uppercase");
         }
@@ -63,9 +64,7 @@ class Net_HL7_Segment {
         $this->_fields[0] = $name;
 
         if (is_array($fields)) {
-
             for ($i = 0; $i < count($fields); $i++) {
-
                 $this->setField($i + 1, $fields[$i]);
             }
         }
@@ -87,12 +86,12 @@ class Net_HL7_Segment {
      * This will render the field as the double quote ("").
      * If values are not provided at all, the method will just return.
      *
-     * @param int Index to set
-     * @param mixed Value for field
+     * @param int   $index Index to set
+     * @param mixed $value Value for field
+     *
      * @return boolean
-     * @access public
      */
-    function setField($index, $value= "")
+    public function setField($index, $value= "")
     {
         if (!($index && $value)) {
             return false;
@@ -117,11 +116,11 @@ class Net_HL7_Segment {
      * </code>
      * otherwise the thing returned will be a reference to an array.
      *
-     * @param int Index of field
+     * @param int $index Index of field
+
      * @return mixed The value of the field
-     * @access public
      */
-    function getField($index)
+    public function getField($index)
     {
         return isset($this->_fields[$index]) ? $this->_fields[$index] : null;
     }
@@ -144,10 +143,10 @@ class Net_HL7_Segment {
      * only the 'from' value is provided, all fields from this index till the
      * end of the segment will be returned.
      *
-     * @param int Start range at this index
-     * @param int Stop range at this index
+     * @param int $from Start range at this index
+     * @param int $to   Stop range at this index
+     *
      * @return array List of fields
-     * @access public
      */
     function getFields($from = 0, $to = 0)
     {
