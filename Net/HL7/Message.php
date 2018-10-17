@@ -166,7 +166,7 @@ class Net_HL7_Message
                         continue;
                     }
 
-                    $comps = preg_split("/\\" . $this->_componentSeparator ."/", $fields[$j], -1, PREG_SPLIT_NO_EMPTY);
+                    $comps = preg_split("/\\" . $this->_componentSeparator ."/", $fields[$j], -1);
 
                     for ($k = 0; $k < count($comps); $k++) {
 
